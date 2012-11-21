@@ -15,7 +15,13 @@
 				$this->ModuleLoader->load('bottom')
 			)), array('class' => 'container'));
 
-			echo $this->element('Assets.frontend/footer');
+			echo $this->Html->tag('div', implode('', array(
+				$this->element('Assets.frontend/footer')
+			)), array('class' => 'container'));
+
+			echo $this->ModuleLoader->load('hidden', true),
+				$this->Compress->script($js_for_layout),
+				$this->fetch('scripts_for_layout');
 		?>
 	</body>
 </html>
