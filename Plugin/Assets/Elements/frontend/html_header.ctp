@@ -16,8 +16,4 @@
 		echo $this->Compress->css($css_for_layout);
 	}
 
-	echo $this->Html->scriptBlock(sprintf(
-		"Infinitas = %s;\nif (Infinitas.base != '/') {Infinitas.base = Infinitas.base + '/';}\n",
-		json_encode(!empty($infinitasJsData) ? $infinitasJsData : '')
-	));
-?>
+	echo $this->Html->scriptBlock("Infinitas = {params:{prefix: null}};\nif (Infinitas.base != '/') {Infinitas.base = Infinitas.base + '/';}\n");

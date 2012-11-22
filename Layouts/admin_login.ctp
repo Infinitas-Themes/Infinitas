@@ -15,7 +15,7 @@
 			));
 			echo $this->Compress->css($css_for_layout);
 
-			echo $this->Html->scriptBlock("Infinitas = {};\nif (Infinitas.base != '/') {Infinitas.base = Infinitas.base + '/';}\n");
+			echo $this->Html->scriptBlock("Infinitas = {params:{prefix: null}};\nif (Infinitas.base != '/') {Infinitas.base = Infinitas.base + '/';}\n");
 		?>
 	</head>
 	<body id="login">
