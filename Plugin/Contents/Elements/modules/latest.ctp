@@ -2,7 +2,8 @@
 	$defaultConfig = array(
 		'title' => 'Latest Content',
 		'limit' => 3,
-		'title_length' => 60
+		'title_length' => 60,
+		'self_plugin' => true
 	);
 	$config = array_merge($defaultConfig, $config);
 
@@ -14,7 +15,7 @@
 		$config['category'] = $this->request->params['category'];
 	}
 
-	if(!empty($config['model'])) {
+	if(!empty($config['model']) && $config['self_plugin']) {
 		list($plugin,) = pluginSplit($config['model']);
 		if($plugin != $this->plugin) {
 			return;
@@ -28,17 +29,14 @@
 	}
 
 	if(empty($latestContents)) {
-		try {
-			$latestContents = ClassRegistry::init('Contents.GlobalContent')->find(
-				!empty($findMethod) ? $findMethod : 'latestList',
-				array(
-					'limit' => $config['limit'],
-					'model' => !empty($config['model']) ? $config['model'] : null,
-					'category' => !empty($config['category']) ? $config['category'] : null
-				)
-			);
-		} catch(Exception $e) {
-		}
+		$latestContents = ClassRegistry::init('Contents.GlobalContent')->find(
+			!empty($findMethod) ? $findMethod : 'latestList',
+			array(
+				'limit' => $config['limit'],
+				'model' => !empty($config['model']) ? $config['model'] : null,
+				'category' => !empty($config['category']) ? $config['category'] : null
+			)
+		);
 	}
 
 	if(empty($latestContents)) {
@@ -62,9 +60,14 @@
 			array('data' => $latestContent)
 		);
 
+		if(empty($latestContent['GlobalContent']['introduction'])) {
+			$latestContent['GlobalContent']['body'] = String::truncate($latestContent['GlobalContent']['body'], 150, array(
+				'html' => true
+			));
+		}
 		$latestContent = $this->Html->tag('div', implode('', array(
 			$this->Html->tag('h3', $latestContent['GlobalContent']['title']),
-			$latestContent['GlobalContent']['introduction'],
+			$latestContent['GlobalContent']['body'],
 			$this->Html->tag('p', $this->Html->link(Configure::read('Website.read_more'), current(current($url)), array(
 				'class' => 'btn btn-small'
 			)))
