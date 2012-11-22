@@ -18,7 +18,6 @@
 	<body>
 		<?php
 			echo $this->ModuleLoader->load('top', true);
-			echo $this->Session->flash();
 		?>
 		<div id="wrap" class="container-fluid">
 			<?php
@@ -27,6 +26,7 @@
 						'class' => 'span2'
 					)),
 					$this->Html->tag('div', implode('', array(
+						$this->Session->flash(),
 						$content_for_layout,
 						$this->ModuleLoader->load('bottom', true)
 					)), array('class' => array('span10', $class_name_for_layout)))
