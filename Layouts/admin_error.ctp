@@ -2,12 +2,17 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet/less" type="text/css" href="/theme/infinitas/less/admin.less">
 		<?php
 			echo $this->Html->charset();
 			echo $this->Html->tag('title', sprintf('Infinitas Admin :: %s', $title_for_layout));
             echo $this->Html->meta('icon');
 
+			echo $this->Compress->css(array(
+				'/theme/infinitas/less/admin.less',
+				'stylesheet/less', array(
+					'ext' => '.less'
+				)
+			));
 			echo $this->Html->scriptBlock("Infinitas = {};\nif (Infinitas.base != '/') {Infinitas.base = Infinitas.base + '/';}\n");
 		?>
 	</head>
