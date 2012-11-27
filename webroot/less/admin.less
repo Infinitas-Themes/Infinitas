@@ -99,11 +99,15 @@ p.info {
  */
 .adminTopBar {
 	.page-header;
+	h1 {
+		font-size: 30px;
+		margin-bottom: 10px;
+	}
 	margin: 0 0 15px;
 	padding-top: 25px;
 	padding-bottom: 80px;
 
-	.wrapper {
+	.btn-group {
 		.pull-right;
 	}
 	#searchForm {
@@ -111,11 +115,14 @@ p.info {
 	}
 
 	.massActions {
-		.wrapper {
-			button {
-				margin-left: 5px;
-				.size(65px, 75px);
-			}
+		i {
+			padding-right: 5px;
+		}
+		.filter {
+			.pull-left;
+		}
+		.mass-actions {
+			.pull-right;
 		}
 	}
 }
@@ -358,6 +365,37 @@ button {
 	.btn;
 }
 
+.btn.btn-edit,
+.btn.btn-toggle,
+.btn.btn-reply {
+
+}
+
+.btn.btn-search {
+	.btn-success;
+}
+
+.btn.btn-spam {
+	.btn-warning;
+}
+
+.btn.btn-delete,
+.btn.btn-ban {
+	.btn-danger;
+}
+
+.btn.btn-save {
+	i {
+		color: @green;
+	}
+}
+
+.btn.btn-cancel {
+	i {
+		color: @red;
+	}
+}
+
 /**
  * Search
  */
@@ -425,16 +463,52 @@ body #debug-kit-toolbar {
 	.hide;
 }
 
-a.new-window {
-	img {
-		width: 16px;
-	}
-	.pull-left;
-	padding-right: 5px;
+a.icon {
+	text-decoration: none;
 }
+
+a.new-window {
+	.pull-left;
+	i {
+		font-size: 10px;
+	}
+	color: @navbarText;
+}
+
+a.status {
+	color: @successText;
+	.icon-off {
+		color: @warningText;
+	}
+}
+
+a.tag {
+	.label;
+	i {
+		padding-right: 2px;
+		font-size: 12px;
+	}
+}
+
+a.locks {
+	color: @warningText;
+	.icon-unlock {
+		color: @navbarText;
+	}
+}
+
 .muted {
 	a {
 		color: @gray;
+	}
+}
+
+td {
+	a {
+		i {
+			padding-right: 5px;
+			font-size: 20px;
+		}
 	}
 }
 
