@@ -132,10 +132,21 @@ p.info {
  */
 
 .dashboard-icons {
-	a.active {
-		color: @white;
-		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-		background-color: @blueDark;
+	a {
+		color: @grayLight;
+		i {
+			padding-right: 5px;
+			font-size: 14px;
+		}
+
+		&:hover {
+			color: @gray;
+		}
+		&.active {
+			color: @white;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+			background-color: @blueDark;
+		}
 	}
 
 	li {
@@ -169,10 +180,19 @@ p.info {
 
 .dashboard {
 	ul.icons {
+		.dashboard-icons;
+		li {
+			text-align: center;
+			i {
+				font-size: 50px;
+				margin: auto;
+				padding: 10px 0 10px 23px;
+				display: block;
+			}
+		}
 		.thumbnails;
 		.row-fluid .thumbnails;
 		text-align: center;
-		.dashboard-icons;
 	}
 	padding: 10px;
 }
