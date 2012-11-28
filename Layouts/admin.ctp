@@ -13,6 +13,9 @@
 					'ext' => '.less'
 				)
 			));
+			$css_for_layout = array_merge($css_for_layout, array(
+				'Assets.jquery_ui_bootstrap'
+			));
 			echo $this->Compress->css($css_for_layout);
 
 			echo $this->Html->scriptBlock(sprintf(
