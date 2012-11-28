@@ -433,6 +433,15 @@ select {
 	width: 100%;
 }
 
+div {
+	&.input {
+		.checkbox {
+			float: left;
+			width: 18%;
+		}
+	}
+}
+
 
 
 .filters {
@@ -480,6 +489,52 @@ form {
 	}
 }
 
+/**
+ *
+ */
+ul.module-positions {
+	.ui-state-highlight {
+		height: 1.5em;
+		line-height: 1.2em;
+	}
+
+	li {
+		h4 {
+			margin: 5px 0px 3px 2px;
+			input {
+				margin: 0px 4px 5px 0;
+			}
+		}
+		a {
+			.pull-right;
+			&.reorder {
+				.pull-left;
+				cursor: move;
+			}
+		}
+		&.span3 {
+			width: 23%;
+			margin-left: 0;
+			margin-right: 20px;
+			.thumbnail {
+				min-height: 200px;
+			}
+		}
+		&.empty {
+			.thumbnail {
+				min-height: 0;
+			}
+		}
+		.module {
+			clear: both;
+		}
+	}
+}
+
+div.module-type {
+	padding-bottom: 10px;
+}
+
 
 /**
  * General
@@ -513,6 +568,14 @@ a.status {
 	.icon-off {
 		color: @warningText;
 	}
+}
+
+a.delete {
+	color: @red;
+}
+
+a.reorder {
+	color: @gray;
 }
 
 a.tag {
