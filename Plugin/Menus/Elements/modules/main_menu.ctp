@@ -7,4 +7,4 @@
 		throw new InvalidArgumentException(__d('menus', 'No menu configured'));
 	}
 
-	echo $this->Menu->bootstrapNav(ClassRegistry::init('Menus.MenuItem')->getMenu($config['menu']));
+	echo $this->Menu->bootstrapNav(ClassRegistry::init('Menus.MenuItem')->find('menu', $config['menu']));
